@@ -17,6 +17,16 @@ function(copyOutputs TARGET_FOLDER)
         VERBATIM
     )
 
+    # Copy runtime assets such as Papyrus scripts and Nemesis patch files.
+    if(EXISTS "${PROJECT_SOURCE_DIR}/public")
+        add_custom_command(
+            TARGET "${PROJECT_NAME}"
+            POST_BUILD
+            COMMAND "${CMAKE_COMMAND}" -E copy_directory "${PROJECT_SOURCE_DIR}/public" "${TARGET_FOLDER}"
+            VERBATIM
+        )
+    endif()
+
     # If you perform a "Debug" build, also copy .pdb file (for debug symbols)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
         add_custom_command(

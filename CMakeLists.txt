@@ -1,4 +1,4 @@
-
+﻿
 if(NOT DEFINED ENV{COMMONLIB_SSE_FOLDER})
   message(FATAL_ERROR "Missing COMMONLIB_SSE_FOLDER environment variable")
 endif()
@@ -16,8 +16,9 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 # If you use CMake features from higher versions, update this to match.
 cmake_minimum_required(VERSION 3.21)
 # Set your project name. This will be the name of your SKSE .dll file.
-set(AUTHOR_NAME "AUTHORNAME")
-set(PRODUCT_NAME "ModName")
+set(AUTHOR_NAME "Viny")
+set(PRODUCT_NAME "MoreRagdoll")
+set(BEAUTIFUL_NAME "More Ragdoll")
 project(${PRODUCT_NAME} VERSION 0.1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -84,7 +85,7 @@ target_include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE IS_HOST_PLUGIN)
+target_compile_definitions(${PROJECT_NAME} PRIVATE IS_HOST_PLUGIN BEAUTIFUL_NAME="${BEAUTIFUL_NAME}")
 
 set(wildlander_output false)
 set(steam_owrt_output false)
